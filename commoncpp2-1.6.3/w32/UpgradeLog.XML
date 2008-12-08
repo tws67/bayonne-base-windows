@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="common">
+</Property><Property Name="解决方案文件" Value="D:\bayonne\commoncpp2-1.6.3\w32\common.sln">
+</Property><Property Name="Date" Value="2008年12月4日星期四">
+</Property><Property Name="Time" Value="下午 21:20">
+</Property></Properties><Event ErrorLevel="0" Project="SampleSocketPort" Source="demo\SampleSocketPort.vcproj" Description="已不再支持对本地 IIS 服务器的 Web 部署。Web 部署生成工具已从项目设置中删除。">
+</Event><Event ErrorLevel="1" Project="SampleSocketPort" Source="demo\SampleSocketPort.vcproj" Description="此应用程序已更新，包含了与 Windows Vista 的用户帐户控制(UAC)功能相关的设置。默认情况下，当运行在启用了 UAC 的 Windows Vista 上时，此应用程序被标记为以与启动它的进程相同的权限运行。此标记还禁止应用程序以虚拟化方式运行。您可以从此项目的属性页中更改与 UAC 相关的设置。">
+</Event><Event ErrorLevel="0" Project="SampleSocketPort" Source="demo\SampleSocketPort.vcproj" Description="项目升级成功。">
+</Event><Event ErrorLevel="3" Project="SampleSocketPort" Source="demo\SampleSocketPort.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="buffer" Source="demo\buffer.vcproj" Description="已不再支持对本地 IIS 服务器的 Web 部署。Web 部署生成工具已从项目设置中删除。">
+</Event><Event ErrorLevel="1" Project="buffer" Source="demo\buffer.vcproj" Description="此应用程序已更新，包含了与 Windows Vista 的用户帐户控制(UAC)功能相关的设置。默认情况下，当运行在启用了 UAC 的 Windows Vista 上时，此应用程序被标记为以与启动它的进程相同的权限运行。此标记还禁止应用程序以虚拟化方式运行。您可以从此项目的属性页中更改与 UAC 相关的设置。">
+</Event><Event ErrorLevel="0" Project="buffer" Source="demo\buffer.vcproj" Description="项目升级成功。">
+</Event><Event ErrorLevel="3" Project="buffer" Source="demo\buffer.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ccext2" Source="ccext2.vcproj" Description="已不再支持对本地 IIS 服务器的 Web 部署。Web 部署生成工具已从项目设置中删除。">
+</Event><Event ErrorLevel="1" Project="ccext2" Source="ccext2.vcproj" Description="此应用程序已更新，包含了与 Windows Vista 的用户帐户控制(UAC)功能相关的设置。默认情况下，当运行在启用了 UAC 的 Windows Vista 上时，此应用程序被标记为以与启动它的进程相同的权限运行。此标记还禁止应用程序以虚拟化方式运行。您可以从此项目的属性页中更改与 UAC 相关的设置。">
+</Event><Event ErrorLevel="0" Project="ccext2" Source="ccext2.vcproj" Description="项目升级成功。">
+</Event><Event ErrorLevel="3" Project="ccext2" Source="ccext2.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ccgnu2" Source="ccgnu2.vcproj" Description="已不再支持对本地 IIS 服务器的 Web 部署。Web 部署生成工具已从项目设置中删除。">
+</Event><Event ErrorLevel="1" Project="ccgnu2" Source="ccgnu2.vcproj" Description="此应用程序已更新，包含了与 Windows Vista 的用户帐户控制(UAC)功能相关的设置。默认情况下，当运行在启用了 UAC 的 Windows Vista 上时，此应用程序被标记为以与启动它的进程相同的权限运行。此标记还禁止应用程序以虚拟化方式运行。您可以从此项目的属性页中更改与 UAC 相关的设置。">
+</Event><Event ErrorLevel="0" Project="ccgnu2" Source="ccgnu2.vcproj" Description="项目升级成功。">
+</Event><Event ErrorLevel="3" Project="ccgnu2" Source="ccgnu2.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="crc32" Source="demo\crc32.vcproj" Description="已不再支持对本地 IIS 服务器的 Web 部署。Web 部署生成工具已从项目设置中删除。">
+</Event><Event ErrorLevel="1" Project="crc32" Source="demo\crc32.vcproj" Description="此应用程序已更新，包含了与 Windows Vista 的用户帐户控制(UAC)功能相关的设置。默认情况下，当运行在启用了 UAC 的 Windows Vista 上时，此应用程序被标记为以与启动它的进程相同的权限运行。此标记还禁止应用程序以虚拟化方式运行。您可以从此项目的属性页中更改与 UAC 相关的设置。">
+</Event><Event ErrorLevel="0" Project="crc32" Source="demo\crc32.vcproj" Description="项目升级成功。">
+</Event><Event ErrorLevel="3" Project="crc32" Source="demo\crc32.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="slogTest" Source="demo\slogTest.vcproj" Description="已不再支持对本地 IIS 服务器的 Web 部署。Web 部署生成工具已从项目设置中删除。">
+</Event><Event ErrorLevel="1" Project="slogTest" Source="demo\slogTest.vcproj" Description="此应用程序已更新，包含了与 Windows Vista 的用户帐户控制(UAC)功能相关的设置。默认情况下，当运行在启用了 UAC 的 Windows Vista 上时，此应用程序被标记为以与启动它的进程相同的权限运行。此标记还禁止应用程序以虚拟化方式运行。您可以从此项目的属性页中更改与 UAC 相关的设置。">
+</Event><Event ErrorLevel="0" Project="slogTest" Source="demo\slogTest.vcproj" Description="项目升级成功。">
+</Event><Event ErrorLevel="3" Project="slogTest" Source="demo\slogTest.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="tcp" Source="demo\tcp.vcproj" Description="已不再支持对本地 IIS 服务器的 Web 部署。Web 部署生成工具已从项目设置中删除。">
+</Event><Event ErrorLevel="1" Project="tcp" Source="demo\tcp.vcproj" Description="此应用程序已更新，包含了与 Windows Vista 的用户帐户控制(UAC)功能相关的设置。默认情况下，当运行在启用了 UAC 的 Windows Vista 上时，此应用程序被标记为以与启动它的进程相同的权限运行。此标记还禁止应用程序以虚拟化方式运行。您可以从此项目的属性页中更改与 UAC 相关的设置。">
+</Event><Event ErrorLevel="0" Project="tcp" Source="demo\tcp.vcproj" Description="项目升级成功。">
+</Event><Event ErrorLevel="3" Project="tcp" Source="demo\tcp.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="tcpservice" Source="demo\tcpservice.vcproj" Description="已不再支持对本地 IIS 服务器的 Web 部署。Web 部署生成工具已从项目设置中删除。">
+</Event><Event ErrorLevel="1" Project="tcpservice" Source="demo\tcpservice.vcproj" Description="此应用程序已更新，包含了与 Windows Vista 的用户帐户控制(UAC)功能相关的设置。默认情况下，当运行在启用了 UAC 的 Windows Vista 上时，此应用程序被标记为以与启动它的进程相同的权限运行。此标记还禁止应用程序以虚拟化方式运行。您可以从此项目的属性页中更改与 UAC 相关的设置。">
+</Event><Event ErrorLevel="0" Project="tcpservice" Source="demo\tcpservice.vcproj" Description="项目升级成功。">
+</Event><Event ErrorLevel="3" Project="tcpservice" Source="demo\tcpservice.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="tcpthread" Source="demo\tcpthread.vcproj" Description="已不再支持对本地 IIS 服务器的 Web 部署。Web 部署生成工具已从项目设置中删除。">
+</Event><Event ErrorLevel="1" Project="tcpthread" Source="demo\tcpthread.vcproj" Description="此应用程序已更新，包含了与 Windows Vista 的用户帐户控制(UAC)功能相关的设置。默认情况下，当运行在启用了 UAC 的 Windows Vista 上时，此应用程序被标记为以与启动它的进程相同的权限运行。此标记还禁止应用程序以虚拟化方式运行。您可以从此项目的属性页中更改与 UAC 相关的设置。">
+</Event><Event ErrorLevel="0" Project="tcpthread" Source="demo\tcpthread.vcproj" Description="项目升级成功。">
+</Event><Event ErrorLevel="3" Project="tcpthread" Source="demo\tcpthread.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="urlfetch" Source="demo\urlfetch.vcproj" Description="已不再支持对本地 IIS 服务器的 Web 部署。Web 部署生成工具已从项目设置中删除。">
+</Event><Event ErrorLevel="1" Project="urlfetch" Source="demo\urlfetch.vcproj" Description="此应用程序已更新，包含了与 Windows Vista 的用户帐户控制(UAC)功能相关的设置。默认情况下，当运行在启用了 UAC 的 Windows Vista 上时，此应用程序被标记为以与启动它的进程相同的权限运行。此标记还禁止应用程序以虚拟化方式运行。您可以从此项目的属性页中更改与 UAC 相关的设置。">
+</Event><Event ErrorLevel="0" Project="urlfetch" Source="demo\urlfetch.vcproj" Description="项目升级成功。">
+</Event><Event ErrorLevel="3" Project="urlfetch" Source="demo\urlfetch.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="xmlfetch" Source="demo\xmlfetch.vcproj" Description="已不再支持对本地 IIS 服务器的 Web 部署。Web 部署生成工具已从项目设置中删除。">
+</Event><Event ErrorLevel="1" Project="xmlfetch" Source="demo\xmlfetch.vcproj" Description="此应用程序已更新，包含了与 Windows Vista 的用户帐户控制(UAC)功能相关的设置。默认情况下，当运行在启用了 UAC 的 Windows Vista 上时，此应用程序被标记为以与启动它的进程相同的权限运行。此标记还禁止应用程序以虚拟化方式运行。您可以从此项目的属性页中更改与 UAC 相关的设置。">
+</Event><Event ErrorLevel="0" Project="xmlfetch" Source="demo\xmlfetch.vcproj" Description="项目升级成功。">
+</Event><Event ErrorLevel="3" Project="xmlfetch" Source="demo\xmlfetch.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="common.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="common.sln" Description="Converted">
+</Event></UpgradeLog>
