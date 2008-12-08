@@ -1,0 +1,14 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+sysconfdir=/etc
+modflags=-module -shared
+dynloader=yes
+
+Name: libccgnu2
+Description: GNU Common C++ core library
+Version: 1.6.3
+Libs:  -lccgnu2 -ldl    -lrt -pthread 
+Cflags:  -D_GNU_SOURCE -I${prefix}/include
+ 
