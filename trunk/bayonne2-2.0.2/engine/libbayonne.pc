@@ -1,0 +1,27 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=/usr/lib64
+includedir=${prefix}/include
+sysconfdir=/etc
+datadir=${prefix}/share
+localstatedir=/var
+
+modflags=-module -shared
+modpath=/usr/lib64/bayonne-2.0
+varpath=/var/lib/bayonne
+logpath=/var/log/bayonne
+runpath=/var/run/bayonne
+moduledir=/usr/lib64/bayonne-2.0
+driverdir=/usr/lib64/bayonne-2.0
+configdir=/etc/bayonne
+datafiles=${prefix}/share/bayonne
+
+Name: libbayonne
+Description: Bayonne IVR Engine Driver Plugin Support Library
+Version: 2.0.2
+Requires: libccscript3 >= 0.2.0, libccaudio2 >= 0.2.1
+Libs:  -lbayonne
+
+ 
+
+ 
