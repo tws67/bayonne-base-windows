@@ -1,0 +1,43 @@
+# Directories...
+$prefix=/usr/local
+$exec_prefix=${prefix}
+$bindir=${exec_prefix}/bin
+$confdir=${prefix}/etc
+$docdir=/usr/local/doc
+$mandir=${prefix}/man
+$datadir=${prefix}/share
+$libdir=${exec_prefix}/lib
+$srcdir=.
+$includedir=${prefix}/include
+$infodir=${prefix}/info
+$scriptdir=${exec_prefix}/lib/ccscript3-0.8
+
+# Product information
+%product GNU ccScript Framework
+%version 0.8.0 -100
+%copyright 1999-2005 Open Source Telecom Corporation
+%vendor Open Source Telecom Corp
+%license COPYING
+%readme README
+%description GNU ccScript class library
+
+f 0644 root root ${libdir}/pkgconfig/libccscript3.pc libccscript3.pc
+d 0755 root root ${includedir}/cc++
+f 0644 root root ${includedir}/cc++/script3.h ./src/script3.h
+f 0644 root root ${libdir} ./src/*.la
+f 0644 root root ${libdir} ./src/.libs/*.a
+d 0755 root root ${scriptdir}
+f 0644 root root ${scriptdir}/math.dso ./modules/math.dso
+f 0644 root root ${scriptdir}/odbc.dso ./optional/odbc/odbc.dso
+%system darwin
+f 0644 root root ${libdir} ./src/.libs/libccscript3-0.8.0.dylib
+l 0644 root root ${libdir}/libccscript3.dylib libccscript3-0.8.0.dylib
+l 0644 root root ${libdir}/libccscript3.dylib-0.8.0.@LT_SUBVER@.dylib libccscript3-0.8.0.dylib
+%system freebsd
+f 0644 root root ${libdir} ./src/.libs/libccscript3-0.8.so.*
+%system linux solaris
+f 0644 root root ${libdir} ./src/.libs/libccscript3-0.8.so.*.*.*
+%system linux freebsd
+%postinstall /sbin/ldconfig
+%postremove /sbin/ldconfig
+%system all
