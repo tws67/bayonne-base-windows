@@ -1,0 +1,87 @@
+From ccScript 0.7.3 to 0.8.0
+- better ripple support and use_macros option
+- virtual can also assign default
+- ripple scripts optionally by namespace
+- fix for things which should be static
+- new "include" statement for merging event handlers
+
+From ccScript 0.7.2 to 0.7.3
+- virtual macros
+- virtual command to assure "xxx_none" option exists
+
+From ccScript 0.7.1 to 0.7.2
+- got rid of some compatibility mode stuff with labels.
+- keywords prototypes for callable functions.
+- compiler fix for keywords embeded function calls.
+
+From ccScript 0.7.0 to 0.7.1
+- apps/exec control script compiler support.
+
+From ccScript 0.6.3 to 0.7.0
+- pack control
+- command embedding inside other script languages.
+- fix library release versioning.
+
+From ccScript 0.6.2 to 0.6.3
+- sort dso module added.
+
+From ccScript 0.6.1 to 0.6.2
+- options executed on slow start.
+- make sure setConst wont take null.
+
+From ccScript 0.6.0 to 0.6.1
+- new getTempSize() method.
+
+From ccScript3 0.5.0 to 0.6.0
+- better sym lookup and use of _ in sym name.
+- isInput command virtual.
+- new storage member to return space available to save values.
+- get symbolic trap name.
+- chkType for adding user defined type declarations.
+- date & time data types module added.
+- changes in branching support.
+
+From ccScript3 0.4.1 to 0.5.0
+- improvements in rpl mode
+- changes in script event handling.
+
+From ccScript3 0.4.0 to 0.4.1
+- support for script registration records
+- useKeywords now public static
+
+From ccScript3 0.3.1 to 0.4.0
+- public access to cmd active script, thread getTimeout...
+- access to image refcount.
+- server, user, etc moved into access vars...
+- getExternal in getSymbol()
+- signal exit has redirect
+- getLogname() added
+
+From ccScript3 0.3.0 to 0.3.1
+- ScriptImage constructors and methods now public
+- .mod changed to .mac...
+- normalization of error messages in compiler
+- fix for build outside source dir...
+- CAPE framework common files merged under GNU Telephony
+- when we exit into ^exit handler or ::exit redirect, only accept 
+  once...special case with exiting flag!
+
+From ccScript3 0.2.0 to 0.3.0
+- stuff for ripple subset
+- fixed configure for SQLConnect detect and --without-odbc
+- new virtuals for error logging
+- lots of api changes.
+
+From ccScript3 0.1.2 to 0.2.0
+- alternate attach interface
+- race condition in testscript fixed
+- odbc manager failure reporting fixed
+- improvements in non-blocking persistant db connection management
+
+From ccScript3 0.1.1 to 0.1.2
+- CAPE debug library build support
+
+From ccScript3 0.1.0 to 0.1.1
+- spec files for RPM generation
+- fix for registry base
+- vs.net generation support

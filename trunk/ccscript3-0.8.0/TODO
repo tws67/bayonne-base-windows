@@ -1,0 +1,15 @@
+* pgsql, mysql specific optional db modules
+
+* gsoap for cc payment services
+
+* more -localtime options in time.pkg
+
+* digit manip package
+
+* #xxx: expressions
+
+* sort package
+
+
+
+
