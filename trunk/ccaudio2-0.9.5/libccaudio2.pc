@@ -1,0 +1,18 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+modflags=-module -shared
+modpath=${libdir}/ccaudio2-0.9
+codecdir=${libdir}/ccaudio2-0.9
+speex_format=true
+adpcm_format=true
+gsm_format=true
+
+Name: libccaudio2
+Description: GNU ccAudio core library
+Version: 0.9.5
+Libs:  -lccaudio2 -ldl  -lm
+Cflags: -I${includedir} 
+
+ 
