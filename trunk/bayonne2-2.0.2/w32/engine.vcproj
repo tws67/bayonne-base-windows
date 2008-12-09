@@ -75,6 +75,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalOptions="/OUT:&quot;Debug/bayonne.dll&quot;"
 				AdditionalDependencies="ccscript3.lib ccaudio2.lib CapeCommon14.lib CapeExtras14.lib ws2_32.lib"
 				OutputFile="Debug/bayonne.dll"
 				Version="1.2"
@@ -325,6 +326,10 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\engine\md5.cpp"
+				>
 			</File>
 			<File
 				RelativePath="..\engine\msgport.cpp"
