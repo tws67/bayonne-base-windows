@@ -163,7 +163,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="bayonne.lib ccscript3.lib ccaudio2.lib CapeCommon14.lib CapeExtras14.lib odbc32.lib odbccp32.lib ws2_32.lib"
-				OutputFile=".\Debug/server.exe"
+				OutputFile="Debug/server.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="Debug,C:\Program Files\GNU Telephony\CAPE Framework\debug"
