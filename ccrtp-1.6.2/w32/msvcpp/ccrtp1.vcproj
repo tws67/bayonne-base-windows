@@ -75,8 +75,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalOptions="/OUT:&quot;Debug/ccrtp1.dll&quot;"
 				AdditionalDependencies="ws2_32.lib CapeCommon14.lib CapeExtras14.lib"
-				OutputFile=".\Debug/ccrtp1.dll"
+				OutputFile="Debug/ccrtp1.dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="Debug;&quot;C:\Program Files\GNU Telephony\CAPE Framework\debug&quot;"
@@ -236,6 +237,10 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\CryptoContext.cxx"
+				>
 			</File>
 			<File
 				RelativePath="..\..\src\data.cpp"
@@ -486,6 +491,10 @@
 			>
 			<File
 				RelativePath="..\..\src\ccrtp\base.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\ccrtp\channel.h"
 				>
 			</File>
 			<File

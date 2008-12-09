@@ -326,7 +326,7 @@ void CryptoContext::deriveSrtpKeys(uint64 index)
 }
 
 /* Based on the algorithm provided in Appendix A - draft-ietf-srtp-05.txt */
-    uint64_t CryptoContext::guessIndex(uint16 new_seq_nb )
+    uint64 CryptoContext::guessIndex(uint16 new_seq_nb )
     {
 	/*
 	 * Initialize the sequences number on first call that uses the
