@@ -49,7 +49,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;E:\bayonne\ccrtp-1.6.2\w32\cc++&quot;;..\common;..\include;..\template;..\..\src;&quot;C:\Program Files\GNU Telephony\CAPE Framework\include&quot;"
+				AdditionalIncludeDirectories="..\common;..\include;..\template;..\..\src;&quot;C:\Program Files\GNU Telephony\CAPE Framework\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;GNUCCRTP_EXPORTS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -502,6 +502,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\ccrtp\CryptoContext.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\ccrtp\ext.h"
 				>
 			</File>
@@ -543,10 +547,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\ccrtp\rtppkt.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ccrtp\socket.h"
 				>
 			</File>
 			<File
