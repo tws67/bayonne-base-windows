@@ -1,0 +1,84 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: osip2 - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP52C.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /I "..\include" /I "..\pthread\include" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "OSIP2_EXPORTS" /D "OSIP_MT" /D "_MT" /D "HAVE_PTHREAD_WIN32" /Fp"Release/osip2.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\osip\osip2\fsm_misc.c"
+"C:\osip\osip2\ict.c"
+"C:\osip\osip2\ict_fsm.c"
+"C:\osip\osip2\ist.c"
+"C:\osip\osip2\ist_fsm.c"
+"C:\osip\osip2\nict.c"
+"C:\osip\osip2\nict_fsm.c"
+"C:\osip\osip2\nist.c"
+"C:\osip\osip2\nist_fsm.c"
+"C:\osip\osip2\osip.c"
+"C:\osip\osip2\osip_dialog.c"
+"C:\osip\osip2\osip_event.c"
+"C:\osip\osip2\osip_time.c"
+"C:\osip\osip2\osip_transaction.c"
+"C:\osip\osip2\port_condv.c"
+"C:\osip\osip2\port_fifo.c"
+"C:\osip\osip2\port_sema.c"
+"C:\osip\osip2\port_thread.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP52C.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP52D.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib osipparser2.lib pthreadVC2.lib /nologo /dll /incremental:no /pdb:"Release/osip2.pdb" /machine:I386 /def:".\osip2.def" /out:"Release/osip2.dll" /implib:"Release/osip2.lib" /libpath:"..\osipparser2\Release" /libpath:"..\pthread\lib" 
+.\Release\fsm_misc.obj
+.\Release\ict.obj
+.\Release\ict_fsm.obj
+.\Release\ist.obj
+.\Release\ist_fsm.obj
+.\Release\nict.obj
+.\Release\nict_fsm.obj
+.\Release\nist.obj
+.\Release\nist_fsm.obj
+.\Release\osip.obj
+.\Release\osip_dialog.obj
+.\Release\osip_event.obj
+.\Release\osip_time.obj
+.\Release\osip_transaction.obj
+.\Release\port_condv.obj
+.\Release\port_fifo.obj
+.\Release\port_sema.obj
+.\Release\port_thread.obj
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP52D.tmp"
+<h3>Output Window</h3>
+Compiling...
+fsm_misc.c
+ict.c
+ict_fsm.c
+ist.c
+ist_fsm.c
+nict.c
+nict_fsm.c
+nist.c
+nist_fsm.c
+osip.c
+osip_dialog.c
+osip_event.c
+osip_time.c
+osip_transaction.c
+port_condv.c
+port_fifo.c
+port_sema.c
+port_thread.c
+Linking...
+   Creating library Release/osip2.lib and object Release/osip2.exp
+
+
+
+<h3>Results</h3>
+osip2.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
