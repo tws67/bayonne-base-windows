@@ -43,7 +43,9 @@
 #ifndef WIN32
 #include <sys/ioctl.h>
 inline size_t ccioctl(SOCKET so, int request, size_t& len) 
-{ return ::ioctl(so,request,&len); }
+{ 
+	return ::ioctl(so,request,&len); 
+}
 #else
 inline size_t ccioctl(SOCKET so, int request, size_t& len )
 { 

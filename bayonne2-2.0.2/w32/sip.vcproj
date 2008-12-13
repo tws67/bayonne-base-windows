@@ -77,7 +77,7 @@
 				Name="VCLinkerTool"
 				IgnoreImportLibrary="true"
 				AdditionalDependencies="eXosip2.lib osip2.lib osipparser2.lib bayonne.lib ccrtp1.lib ccscript3.lib ccaudio2.lib CapeCommon14.lib CapeExtras14.lib ws2_32.lib"
-				OutputFile="Debug/sip.dll"
+				OutputFile="Debug/sip.x86"
 				Version="0.1"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"

@@ -217,6 +217,10 @@
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 			>
 			<File
+				RelativePath="..\..\src\ccrtp\channel.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\control.cpp"
 				>
 				<FileConfiguration
@@ -491,10 +495,6 @@
 			>
 			<File
 				RelativePath="..\..\src\ccrtp\base.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ccrtp\channel.h"
 				>
 			</File>
 			<File
