@@ -1,0 +1,768 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="3.5" InitialTargets="ValidateSolutionConfiguration;ValidateToolsVersions" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_SolutionProjectConfiguration>Debug|Win32</_SolutionProjectConfiguration>
+    <_SolutionProjectToolsVersion>3.5</_SolutionProjectToolsVersion>
+    <_SolutionProjectCacheVersion>3.5</_SolutionProjectCacheVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <_SolutionProjectProjects Include="ccscript3.vcproj" />
+    <_SolutionProjectProjects Include="math.vcproj" />
+    <_SolutionProjectProjects Include="odbcrll.vcproj" />
+    <_SolutionProjectProjects Include="sort.vcproj" />
+    <_SolutionProjectProjects Include="testscript.vcproj" />
+    <_SolutionProjectProjects Include="time.vcproj" />
+  </ItemGroup>
+  <UsingTask TaskName="Microsoft.Build.Tasks.CreateTemporaryVCProject" AssemblyName="Microsoft.Build.Tasks.v3.5, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <UsingTask TaskName="Microsoft.Build.Tasks.ResolveVCProjectOutput" AssemblyName="Microsoft.Build.Tasks.v3.5, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <PropertyGroup Condition=" '$(Configuration)' == '' ">
+    <Configuration>Debug</Configuration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == '' ">
+    <Platform>Win32</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(AspNetConfiguration)' == '') ">
+    <AspNetConfiguration>$(Configuration)</AspNetConfiguration>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SolutionDir>E:\bayonne\ccscript3-0.8.0\w32\</SolutionDir>
+    <SolutionExt>.sln</SolutionExt>
+    <SolutionFileName>ccscript3.sln</SolutionFileName>
+    <SolutionName>ccscript3</SolutionName>
+    <SolutionPath>E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln</SolutionPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' == '2.0'">v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' != '2.0'">v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+        <ProjectConfiguration Project="{7A6F937D-2C63-466D-A58A-03397EA19B11}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{0D284A39-F3E9-49CA-BD50-075546DE1491}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{3AD74F14-2E5C-4F5E-9952-D28A96D09B94}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{1B27D5D4-7B81-4477-827B-6635F7B8F230}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{2F68E114-5AE5-4552-AB86-9DAD441EDBEF}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{21DAD9F0-50C5-4377-AD3C-886B12F96CE4}">Debug|Win32</ProjectConfiguration>
+      </SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+        <ProjectConfiguration Project="{7A6F937D-2C63-466D-A58A-03397EA19B11}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{0D284A39-F3E9-49CA-BD50-075546DE1491}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{3AD74F14-2E5C-4F5E-9952-D28A96D09B94}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{1B27D5D4-7B81-4477-827B-6635F7B8F230}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{2F68E114-5AE5-4552-AB86-9DAD441EDBEF}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{21DAD9F0-50C5-4377-AD3C-886B12F96CE4}">Release|Win32</ProjectConfiguration>
+      </SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <Target Name="ValidateSolutionConfiguration">
+    <Error Text="指定的解决方案配置“$(Configuration)|$(Platform)”无效。请使用 Configuration 和 Platform 属性指定有效的解决方案配置(例如 MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;)，或者将这些属性留空，以使用默认的解决方案配置。" Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' != 'true')" />
+    <Warning Text="指定的解决方案配置“$(Configuration)|$(Platform)”无效。请使用 Configuration 和 Platform 属性指定有效的解决方案配置(例如 MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;)，或者将这些属性留空，以使用默认的解决方案配置。" Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' == 'true')" />
+    <Message Text="正在生成解决方案配置“$(Configuration)|$(Platform)”。" Condition="'$(CurrentSolutionConfigurationContents)' != ''" />
+  </Target>
+  <Target Name="ValidateToolsVersions">
+    <Error Text="解决方案的工具版本“$(MSBuildToolsVersion)”不支持使用不同的工具版本生成项目。" Code="MSB4149" HelpKeyword="MSBuild.SolutionToolsVersionDoesNotSupportProjectToolsVersion" Condition="'$(MSBuildToolsVersion)' == '2.0' and ('$(ProjectToolsVersion)' != '2.0' and '$(ProjectToolsVersion)' != '')" />
+  </Target>
+  <Target Name="ccscript3" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="ccscript3:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="ccscript3:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="ccscript3:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="math" DependsOnTargets="ccscript3" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References)" ReferenceImportLibraries="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References)" ReferenceImportLibraries="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="math:Clean" DependsOnTargets="ccscript3:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Clean_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Clean)" ReferenceImportLibraries="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Clean_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Clean)" ReferenceImportLibraries="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="math:Rebuild" DependsOnTargets="ccscript3:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Rebuild_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Rebuild)" ReferenceImportLibraries="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Rebuild_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_Rebuild)" ReferenceImportLibraries="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="math:Publish" DependsOnTargets="ccscript3:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References)" ReferenceImportLibraries="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_References)" ReferenceImportLibraries="@(Project_0D284A39-F3E9-49CA-BD50-075546DE1491_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\math.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="odbcrll" DependsOnTargets="ccscript3" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References)" ReferenceImportLibraries="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References)" ReferenceImportLibraries="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="odbcrll:Clean" DependsOnTargets="ccscript3:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Clean_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Clean)" ReferenceImportLibraries="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Clean_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Clean)" ReferenceImportLibraries="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="odbcrll:Rebuild" DependsOnTargets="ccscript3:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Rebuild_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Rebuild)" ReferenceImportLibraries="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Rebuild_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_Rebuild)" ReferenceImportLibraries="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="odbcrll:Publish" DependsOnTargets="ccscript3:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References)" ReferenceImportLibraries="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_References)" ReferenceImportLibraries="@(Project_3AD74F14-2E5C-4F5E-9952-D28A96D09B94_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="testscript" DependsOnTargets="odbcrll;time;math;ccscript3" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_0)" AdditionalMetadata="Guid={3AD74F14-2E5C-4F5E-9952-D28A96D09B94}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_1" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_1)" AdditionalMetadata="Guid={2F68E114-5AE5-4552-AB86-9DAD441EDBEF}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_2" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_2)" AdditionalMetadata="Guid={0D284A39-F3E9-49CA-BD50-075546DE1491}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_3" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_3)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" ReferenceGuids="{3AD74F14-2E5C-4F5E-9952-D28A96D09B94};{2F68E114-5AE5-4552-AB86-9DAD441EDBEF};{0D284A39-F3E9-49CA-BD50-075546DE1491};{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References)" ReferenceImportLibraries="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_0)" AdditionalMetadata="Guid={3AD74F14-2E5C-4F5E-9952-D28A96D09B94}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_1" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_1)" AdditionalMetadata="Guid={2F68E114-5AE5-4552-AB86-9DAD441EDBEF}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_2" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_2)" AdditionalMetadata="Guid={0D284A39-F3E9-49CA-BD50-075546DE1491}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_3" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_3)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" ReferenceGuids="{3AD74F14-2E5C-4F5E-9952-D28A96D09B94};{2F68E114-5AE5-4552-AB86-9DAD441EDBEF};{0D284A39-F3E9-49CA-BD50-075546DE1491};{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References)" ReferenceImportLibraries="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="testscript:Clean" DependsOnTargets="odbcrll:Clean;time:Clean;math:Clean;ccscript3:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_0)" AdditionalMetadata="Guid={3AD74F14-2E5C-4F5E-9952-D28A96D09B94}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_1" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_1)" AdditionalMetadata="Guid={2F68E114-5AE5-4552-AB86-9DAD441EDBEF}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_2" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_2)" AdditionalMetadata="Guid={0D284A39-F3E9-49CA-BD50-075546DE1491}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_3" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_3)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" ReferenceGuids="{3AD74F14-2E5C-4F5E-9952-D28A96D09B94};{2F68E114-5AE5-4552-AB86-9DAD441EDBEF};{0D284A39-F3E9-49CA-BD50-075546DE1491};{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean)" ReferenceImportLibraries="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_0)" AdditionalMetadata="Guid={3AD74F14-2E5C-4F5E-9952-D28A96D09B94}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_1" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_1)" AdditionalMetadata="Guid={2F68E114-5AE5-4552-AB86-9DAD441EDBEF}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_2" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_2)" AdditionalMetadata="Guid={0D284A39-F3E9-49CA-BD50-075546DE1491}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_3" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean_3)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" ReferenceGuids="{3AD74F14-2E5C-4F5E-9952-D28A96D09B94};{2F68E114-5AE5-4552-AB86-9DAD441EDBEF};{0D284A39-F3E9-49CA-BD50-075546DE1491};{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Clean)" ReferenceImportLibraries="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="testscript:Rebuild" DependsOnTargets="odbcrll:Rebuild;time:Rebuild;math:Rebuild;ccscript3:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_0)" AdditionalMetadata="Guid={3AD74F14-2E5C-4F5E-9952-D28A96D09B94}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_1" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_1)" AdditionalMetadata="Guid={2F68E114-5AE5-4552-AB86-9DAD441EDBEF}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_2" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_2)" AdditionalMetadata="Guid={0D284A39-F3E9-49CA-BD50-075546DE1491}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_3" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_3)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" ReferenceGuids="{3AD74F14-2E5C-4F5E-9952-D28A96D09B94};{2F68E114-5AE5-4552-AB86-9DAD441EDBEF};{0D284A39-F3E9-49CA-BD50-075546DE1491};{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild)" ReferenceImportLibraries="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_0)" AdditionalMetadata="Guid={3AD74F14-2E5C-4F5E-9952-D28A96D09B94}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_1" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_1)" AdditionalMetadata="Guid={2F68E114-5AE5-4552-AB86-9DAD441EDBEF}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_2" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_2)" AdditionalMetadata="Guid={0D284A39-F3E9-49CA-BD50-075546DE1491}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_3" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild_3)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" ReferenceGuids="{3AD74F14-2E5C-4F5E-9952-D28A96D09B94};{2F68E114-5AE5-4552-AB86-9DAD441EDBEF};{0D284A39-F3E9-49CA-BD50-075546DE1491};{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_Rebuild)" ReferenceImportLibraries="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="testscript:Publish" DependsOnTargets="odbcrll:Publish;time:Publish;math:Publish;ccscript3:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_0)" AdditionalMetadata="Guid={3AD74F14-2E5C-4F5E-9952-D28A96D09B94}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_1" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_1)" AdditionalMetadata="Guid={2F68E114-5AE5-4552-AB86-9DAD441EDBEF}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_2" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_2)" AdditionalMetadata="Guid={0D284A39-F3E9-49CA-BD50-075546DE1491}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_3" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_3)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" ReferenceGuids="{3AD74F14-2E5C-4F5E-9952-D28A96D09B94};{2F68E114-5AE5-4552-AB86-9DAD441EDBEF};{0D284A39-F3E9-49CA-BD50-075546DE1491};{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References)" ReferenceImportLibraries="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\odbcrll.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_0)" AdditionalMetadata="Guid={3AD74F14-2E5C-4F5E-9952-D28A96D09B94}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_1" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_1)" AdditionalMetadata="Guid={2F68E114-5AE5-4552-AB86-9DAD441EDBEF}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\math.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_2" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_2)" AdditionalMetadata="Guid={0D284A39-F3E9-49CA-BD50-075546DE1491}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_3" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References_3)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" ReferenceGuids="{3AD74F14-2E5C-4F5E-9952-D28A96D09B94};{2F68E114-5AE5-4552-AB86-9DAD441EDBEF};{0D284A39-F3E9-49CA-BD50-075546DE1491};{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_References)" ReferenceImportLibraries="@(Project_1B27D5D4-7B81-4477-827B-6635F7B8F230_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\testscript.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="time" DependsOnTargets="ccscript3" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References)" ReferenceImportLibraries="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References)" ReferenceImportLibraries="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="time:Clean" DependsOnTargets="ccscript3:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Clean_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Clean)" ReferenceImportLibraries="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Clean_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Clean)" ReferenceImportLibraries="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="time:Rebuild" DependsOnTargets="ccscript3:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Rebuild_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Rebuild)" ReferenceImportLibraries="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Rebuild_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_Rebuild)" ReferenceImportLibraries="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="time:Publish" DependsOnTargets="ccscript3:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References)" ReferenceImportLibraries="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_References)" ReferenceImportLibraries="@(Project_2F68E114-5AE5-4552-AB86-9DAD441EDBEF_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\time.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="sort" DependsOnTargets="ccscript3" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References)" ReferenceImportLibraries="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References)" ReferenceImportLibraries="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="sort:Clean" DependsOnTargets="ccscript3:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Clean_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Clean)" ReferenceImportLibraries="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Clean_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Clean)" ReferenceImportLibraries="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="sort:Rebuild" DependsOnTargets="ccscript3:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Rebuild_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Rebuild)" ReferenceImportLibraries="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Rebuild_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_Rebuild)" ReferenceImportLibraries="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="sort:Publish" DependsOnTargets="ccscript3:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References)" ReferenceImportLibraries="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References_0)" AdditionalMetadata="Guid={7A6F937D-2C63-466D-A58A-03397EA19B11}">
+      <Output TaskParameter="Include" ItemName="Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" ReferenceGuids="{7A6F937D-2C63-466D-A58A-03397EA19B11}" ReferenceAssemblies="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_References)" ReferenceImportLibraries="@(Project_21DAD9F0-50C5-4377-AD3C-886B12F96CE4_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\ccscript3-0.8.0\w32\ccscript3.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\ccscript3-0.8.0\w32\sort.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="Build" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel0.Identity)”。" Condition="@(SkipLevel0) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel0.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="ccscript3" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel1.Identity)”。" Condition="@(SkipLevel1) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel1.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <CallTarget Targets="math;odbcrll;time;sort" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel2) != ''" Projects="@(BuildLevel2)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel2.Identity)”。" Condition="@(SkipLevel2) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel2.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel2) != ''" />
+    <CallTarget Targets="testscript" RunEachTargetSeparately="true" />
+  </Target>
+  <Target Name="Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Clean" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel0.Identity)”。" Condition="@(SkipLevel0) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel0.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="ccscript3:Clean" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Clean" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel1.Identity)”。" Condition="@(SkipLevel1) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel1.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <CallTarget Targets="math:Clean;odbcrll:Clean;time:Clean;sort:Clean" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel2) != ''" Projects="@(BuildLevel2)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Clean" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel2.Identity)”。" Condition="@(SkipLevel2) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel2.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel2) != ''" />
+    <CallTarget Targets="testscript:Clean" RunEachTargetSeparately="true" />
+    <Delete Files="ccscript3.sln.cache" />
+  </Target>
+  <Target Name="Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Rebuild" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel0.Identity)”。" Condition="@(SkipLevel0) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel0.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="ccscript3:Rebuild" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Rebuild" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel1.Identity)”。" Condition="@(SkipLevel1) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel1.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <CallTarget Targets="math:Rebuild;odbcrll:Rebuild;time:Rebuild;sort:Rebuild" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel2) != ''" Projects="@(BuildLevel2)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Rebuild" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel2.Identity)”。" Condition="@(SkipLevel2) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel2.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel2) != ''" />
+    <CallTarget Targets="testscript:Rebuild" RunEachTargetSeparately="true" />
+  </Target>
+  <Target Name="Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Publish" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel0.Identity)”。" Condition="@(SkipLevel0) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel0.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="ccscript3:Publish" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Publish" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel1.Identity)”。" Condition="@(SkipLevel1) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel1.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <CallTarget Targets="math:Publish;odbcrll:Publish;time:Publish;sort:Publish" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel2) != ''" Projects="@(BuildLevel2)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Publish" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel2.Identity)”。" Condition="@(SkipLevel2) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel2.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel2) != ''" />
+    <CallTarget Targets="testscript:Publish" RunEachTargetSeparately="true" />
+  </Target>
+</Project>
