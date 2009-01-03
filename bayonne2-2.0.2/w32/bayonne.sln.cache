@@ -1,0 +1,988 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="3.5" InitialTargets="ValidateSolutionConfiguration;ValidateToolsVersions" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_SolutionProjectConfiguration>Debug|Win32</_SolutionProjectConfiguration>
+    <_SolutionProjectToolsVersion>3.5</_SolutionProjectToolsVersion>
+    <_SolutionProjectCacheVersion>3.5</_SolutionProjectCacheVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <_SolutionProjectProjects Include="de.vcproj" />
+    <_SolutionProjectProjects Include="en.vcproj" />
+    <_SolutionProjectProjects Include="engine.vcproj" />
+    <_SolutionProjectProjects Include="es.vcproj" />
+    <_SolutionProjectProjects Include="fr.vcproj" />
+    <_SolutionProjectProjects Include="it.vcproj" />
+    <_SolutionProjectProjects Include="ivrscript1.vcproj" />
+    <_SolutionProjectProjects Include="ru.vcproj" />
+    <_SolutionProjectProjects Include="server.vcproj" />
+    <_SolutionProjectProjects Include="sip.vcproj" />
+    <_SolutionProjectProjects Include="soundcard.vcproj" />
+    <_SolutionProjectProjects Include="tcpmon.vcproj" />
+  </ItemGroup>
+  <UsingTask TaskName="Microsoft.Build.Tasks.CreateTemporaryVCProject" AssemblyName="Microsoft.Build.Tasks.v3.5, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <UsingTask TaskName="Microsoft.Build.Tasks.ResolveVCProjectOutput" AssemblyName="Microsoft.Build.Tasks.v3.5, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <PropertyGroup Condition=" '$(Configuration)' == '' ">
+    <Configuration>Debug</Configuration>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == '' ">
+    <Platform>Win32</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(AspNetConfiguration)' == '') ">
+    <AspNetConfiguration>$(Configuration)</AspNetConfiguration>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SolutionDir>E:\bayonne\bayonne2-2.0.2\w32\</SolutionDir>
+    <SolutionExt>.sln</SolutionExt>
+    <SolutionFileName>bayonne.sln</SolutionFileName>
+    <SolutionName>bayonne</SolutionName>
+    <SolutionPath>E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln</SolutionPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' == '2.0'">v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition="'$(TargetFrameworkVersion)' == '' and '$(MSBuildToolsVersion)' != '2.0'">v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+        <ProjectConfiguration Project="{919094BB-DB59-48E7-B5D0-0B6993243DDC}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{52D1651C-6A19-48E4-AEF8-EAAAFC94EB52}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{12824BED-6B70-46F0-B88D-1C061B4C3C3C}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{E663D0E7-8150-4E99-959D-92F19EE3A93E}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{81BC6C70-F866-4CED-9CDF-5BF9811EF00F}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{00932BF4-0757-4A47-B914-FD1DAE6D06BA}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{11B09F2C-A79E-4ED6-904C-F22C8EC61C77}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{12DF63EF-5E08-4779-A33D-1D5DBE801037}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{7CF8ECA5-5B51-4091-A306-F60716048AAE}">Debug|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{0851613E-74BC-43EF-98B1-3418613D6206}">Debug|Win32</ProjectConfiguration>
+      </SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <PropertyGroup Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+        <ProjectConfiguration Project="{919094BB-DB59-48E7-B5D0-0B6993243DDC}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{52D1651C-6A19-48E4-AEF8-EAAAFC94EB52}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{12824BED-6B70-46F0-B88D-1C061B4C3C3C}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{E663D0E7-8150-4E99-959D-92F19EE3A93E}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{81BC6C70-F866-4CED-9CDF-5BF9811EF00F}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{00932BF4-0757-4A47-B914-FD1DAE6D06BA}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{11B09F2C-A79E-4ED6-904C-F22C8EC61C77}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{12DF63EF-5E08-4779-A33D-1D5DBE801037}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{7CF8ECA5-5B51-4091-A306-F60716048AAE}">Release|Win32</ProjectConfiguration>
+        <ProjectConfiguration Project="{0851613E-74BC-43EF-98B1-3418613D6206}">Release|Win32</ProjectConfiguration>
+      </SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <Target Name="ValidateSolutionConfiguration">
+    <Error Text="指定的解决方案配置“$(Configuration)|$(Platform)”无效。请使用 Configuration 和 Platform 属性指定有效的解决方案配置(例如 MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;)，或者将这些属性留空，以使用默认的解决方案配置。" Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' != 'true')" />
+    <Warning Text="指定的解决方案配置“$(Configuration)|$(Platform)”无效。请使用 Configuration 和 Platform 属性指定有效的解决方案配置(例如 MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;)，或者将这些属性留空，以使用默认的解决方案配置。" Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' == 'true')" />
+    <Message Text="正在生成解决方案配置“$(Configuration)|$(Platform)”。" Condition="'$(CurrentSolutionConfigurationContents)' != ''" />
+  </Target>
+  <Target Name="ValidateToolsVersions">
+    <Error Text="解决方案的工具版本“$(MSBuildToolsVersion)”不支持使用不同的工具版本生成项目。" Code="MSB4149" HelpKeyword="MSBuild.SolutionToolsVersionDoesNotSupportProjectToolsVersion" Condition="'$(MSBuildToolsVersion)' == '2.0' and ('$(ProjectToolsVersion)' != '2.0' and '$(ProjectToolsVersion)' != '')" />
+  </Target>
+  <Target Name="de" DependsOnTargets="engine" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References)" ReferenceImportLibraries="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References)" ReferenceImportLibraries="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="de:Clean" DependsOnTargets="engine:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Clean)" ReferenceImportLibraries="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Clean)" ReferenceImportLibraries="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="de:Rebuild" DependsOnTargets="engine:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Rebuild)" ReferenceImportLibraries="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_Rebuild)" ReferenceImportLibraries="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="de:Publish" DependsOnTargets="engine:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References)" ReferenceImportLibraries="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_References)" ReferenceImportLibraries="@(Project_919094BB-DB59-48E7-B5D0-0B6993243DDC_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\de.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="en" DependsOnTargets="engine" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References)" ReferenceImportLibraries="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References)" ReferenceImportLibraries="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="en:Clean" DependsOnTargets="engine:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Clean)" ReferenceImportLibraries="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Clean)" ReferenceImportLibraries="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="en:Rebuild" DependsOnTargets="engine:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Rebuild)" ReferenceImportLibraries="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_Rebuild)" ReferenceImportLibraries="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="en:Publish" DependsOnTargets="engine:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References)" ReferenceImportLibraries="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_References)" ReferenceImportLibraries="@(Project_52D1651C-6A19-48E4-AEF8-EAAAFC94EB52_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\en.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="engine" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="engine:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="engine:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="engine:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="es" DependsOnTargets="engine" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References)" ReferenceImportLibraries="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References)" ReferenceImportLibraries="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="es:Clean" DependsOnTargets="engine:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Clean)" ReferenceImportLibraries="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Clean)" ReferenceImportLibraries="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="es:Rebuild" DependsOnTargets="engine:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Rebuild)" ReferenceImportLibraries="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_Rebuild)" ReferenceImportLibraries="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="es:Publish" DependsOnTargets="engine:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References)" ReferenceImportLibraries="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_References)" ReferenceImportLibraries="@(Project_BFD3F154-9E1C-40BF-BDC6-69B4BEA3FD06_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\es.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="fr" DependsOnTargets="engine" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References)" ReferenceImportLibraries="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References)" ReferenceImportLibraries="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="fr:Clean" DependsOnTargets="engine:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Clean)" ReferenceImportLibraries="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Clean)" ReferenceImportLibraries="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="fr:Rebuild" DependsOnTargets="engine:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Rebuild)" ReferenceImportLibraries="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_Rebuild)" ReferenceImportLibraries="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="fr:Publish" DependsOnTargets="engine:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References)" ReferenceImportLibraries="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_References)" ReferenceImportLibraries="@(Project_12824BED-6B70-46F0-B88D-1C061B4C3C3C_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\fr.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="it" DependsOnTargets="engine" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References)" ReferenceImportLibraries="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References)" ReferenceImportLibraries="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="it:Clean" DependsOnTargets="engine:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Clean)" ReferenceImportLibraries="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Clean)" ReferenceImportLibraries="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="it:Rebuild" DependsOnTargets="engine:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Rebuild)" ReferenceImportLibraries="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_Rebuild)" ReferenceImportLibraries="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="it:Publish" DependsOnTargets="engine:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References)" ReferenceImportLibraries="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_References)" ReferenceImportLibraries="@(Project_E663D0E7-8150-4E99-959D-92F19EE3A93E_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\it.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="ivrscript1" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ivrscript1.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ivrscript1.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="ivrscript1:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ivrscript1.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ivrscript1.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="ivrscript1:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ivrscript1.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ivrscript1.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="ivrscript1:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ivrscript1.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ivrscript1.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="ru" DependsOnTargets="engine" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References)" ReferenceImportLibraries="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References)" ReferenceImportLibraries="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="ru:Clean" DependsOnTargets="engine:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Clean)" ReferenceImportLibraries="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Clean)" ReferenceImportLibraries="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="ru:Rebuild" DependsOnTargets="engine:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Rebuild)" ReferenceImportLibraries="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_Rebuild)" ReferenceImportLibraries="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="ru:Publish" DependsOnTargets="engine:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References)" ReferenceImportLibraries="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_References)" ReferenceImportLibraries="@(Project_00932BF4-0757-4A47-B914-FD1DAE6D06BA_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\ru.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="server" DependsOnTargets="engine" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References)" ReferenceImportLibraries="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References)" ReferenceImportLibraries="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="server:Clean" DependsOnTargets="engine:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Clean)" ReferenceImportLibraries="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Clean)" ReferenceImportLibraries="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="server:Rebuild" DependsOnTargets="engine:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Rebuild)" ReferenceImportLibraries="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_Rebuild)" ReferenceImportLibraries="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="server:Publish" DependsOnTargets="engine:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References)" ReferenceImportLibraries="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_References)" ReferenceImportLibraries="@(Project_11B09F2C-A79E-4ED6-904C-F22C8EC61C77_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\server.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="soundcard" DependsOnTargets="engine" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References)" ReferenceImportLibraries="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References)" ReferenceImportLibraries="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="soundcard:Clean" DependsOnTargets="engine:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Clean)" ReferenceImportLibraries="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Clean)" ReferenceImportLibraries="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="soundcard:Rebuild" DependsOnTargets="engine:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Rebuild)" ReferenceImportLibraries="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_Rebuild)" ReferenceImportLibraries="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="soundcard:Publish" DependsOnTargets="engine:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References)" ReferenceImportLibraries="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_References)" ReferenceImportLibraries="@(Project_12DF63EF-5E08-4779-A33D-1D5DBE801037_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\soundcard.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="tcpmon" DependsOnTargets="engine" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References)" ReferenceImportLibraries="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References)" ReferenceImportLibraries="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="tcpmon:Clean" DependsOnTargets="engine:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Clean)" ReferenceImportLibraries="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Clean_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries_Clean" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Clean_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Clean" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Clean)" ReferenceImportLibraries="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries_Clean)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="tcpmon:Rebuild" DependsOnTargets="engine:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Rebuild)" ReferenceImportLibraries="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Rebuild_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries_Rebuild" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Rebuild_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Rebuild" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_Rebuild)" ReferenceImportLibraries="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries_Rebuild)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="tcpmon:Publish" DependsOnTargets="engine:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.vcproj" Configuration="Debug|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References)" ReferenceImportLibraries="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Debug_Win32.vcproj" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <ResolveVCProjectOutput ProjectReferences="E:\bayonne\bayonne2-2.0.2\w32\engine.vcproj" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') ">
+      <Output TaskParameter="ResolvedOutputPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_0" />
+      <Output TaskParameter="ResolvedImportLibraryPaths" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries" />
+    </ResolveVCProjectOutput>
+    <CreateItem Include="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References_0)" AdditionalMetadata="Guid={F3A8B41E-8134-4CE8-A6B8-900BE4766043}">
+      <Output TaskParameter="Include" ItemName="Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References" />
+    </CreateItem>
+    <CreateTemporaryVCProject ProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.vcproj" Configuration="Release|Win32" OutputProjectFile="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" ReferenceGuids="{F3A8B41E-8134-4CE8-A6B8-900BE4766043}" ReferenceAssemblies="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_References)" ReferenceImportLibraries="@(Project_7CF8ECA5-5B51-4091-A306-F60716048AAE_ImportLibraries)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+    <Delete Files="E:\bayonne\bayonne2-2.0.2\w32\tcpmon.tmp_Release_Win32.vcproj" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="sip" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\sip.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\sip.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="sip:Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\sip.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\sip.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Clean="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="sip:Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\sip.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\sip.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Rebuild="true" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="sip:Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <Warning Text="VC 项目不支持“Publish”目标。" Code="MSB4076" HelpKeyword="MSBuild.SolutionVCProjectNoPublish" />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\sip.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Debug|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Debug') and ('$(Platform)' == 'Win32') " />
+    <VCBuild Projects="E:\bayonne\bayonne2-2.0.2\w32\sip.vcproj" ToolPath="$(VCBuildToolPath)" Configuration="Release|Win32" SolutionFile="E:\bayonne\bayonne2-2.0.2\w32\bayonne.sln" Override="$(VCBuildOverride)" AdditionalLibPaths="$(VCBuildAdditionalLibPaths)" AdditionalLinkLibraryPaths="$(VCBuildAdditionalLinkLibraryPaths)" UseEnvironment="$(VCBuildUseEnvironment)" UserEnvironment="$(VCBuildUserEnvironment)" AdditionalOptions="$(VCBuildAdditionalOptions)" Condition=" ('$(Configuration)' == 'Release') and ('$(Platform)' == 'Win32') " />
+  </Target>
+  <Target Name="Build" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel0.Identity)”。" Condition="@(SkipLevel0) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel0.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="engine;ivrscript1;sip" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel1.Identity)”。" Condition="@(SkipLevel1) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel1.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <CallTarget Targets="de;en;es;fr;it;ru;server;soundcard;tcpmon" RunEachTargetSeparately="true" />
+  </Target>
+  <Target Name="Clean" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Clean" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel0.Identity)”。" Condition="@(SkipLevel0) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel0.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="engine:Clean;ivrscript1:Clean;sip:Clean" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Clean" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel1.Identity)”。" Condition="@(SkipLevel1) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel1.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <CallTarget Targets="de:Clean;en:Clean;es:Clean;fr:Clean;it:Clean;ru:Clean;server:Clean;soundcard:Clean;tcpmon:Clean" RunEachTargetSeparately="true" />
+    <Delete Files="bayonne.sln.cache" />
+  </Target>
+  <Target Name="Rebuild" Condition="'$(CurrentSolutionConfigurationContents)' != ''" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Rebuild" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel0.Identity)”。" Condition="@(SkipLevel0) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel0.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="engine:Rebuild;ivrscript1:Rebuild;sip:Rebuild" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Rebuild" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel1.Identity)”。" Condition="@(SkipLevel1) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel1.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <CallTarget Targets="de:Rebuild;en:Rebuild;es:Rebuild;fr:Rebuild;it:Rebuild;ru:Rebuild;server:Rebuild;soundcard:Rebuild;tcpmon:Rebuild" RunEachTargetSeparately="true" />
+  </Target>
+  <Target Name="Publish" Condition="'$(CurrentSolutionConfigurationContents)' != ''">
+    <MSBuild Condition="@(BuildLevel0) != ''" Projects="@(BuildLevel0)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Publish" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel0.Identity)”。" Condition="@(SkipLevel0) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel0.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel0) != ''" />
+    <CallTarget Targets="engine:Publish;ivrscript1:Publish;sip:Publish" RunEachTargetSeparately="true" />
+    <MSBuild Condition="@(BuildLevel1) != ''" Projects="@(BuildLevel1)" Properties="Configuration=%(Configuration); Platform=%(Platform); BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" Targets="Publish" ToolsVersion="$(ProjectToolsVersion)" BuildInParallel="true" UnloadProjectsOnCompletion="$(UnloadProjectsOnCompletion)" UseResultsCache="$(UseResultsCache)" />
+    <Message Text="在解决方案配置“$(Configuration)|$(Platform)”中未选定生成项目“%(SkipLevel1.Identity)”。" Condition="@(SkipLevel1) != ''" />
+    <Warning Text="在解决方案文件中没有为解决方案配置“$(Configuration)|$(Platform)”指定项目“%(MissingConfigLevel1.Identity)”的项目配置。" Code="MSB4121" HelpKeyword="MSBuild.SolutionProjectConfigurationMissing" Condition="@(MissingConfigLevel1) != ''" />
+    <CallTarget Targets="de:Publish;en:Publish;es:Publish;fr:Publish;it:Publish;ru:Publish;server:Publish;soundcard:Publish;tcpmon:Publish" RunEachTargetSeparately="true" />
+  </Target>
+</Project>
